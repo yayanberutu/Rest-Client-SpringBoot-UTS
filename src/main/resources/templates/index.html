@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</head>
+<body>
+<form>
+	<input type="text" th:action="@{/get}" method="post" th:object="${item}">
+	<button type="submit" class="btn btn-primary"  th:field="*{id_item}">Search</button>
+</form>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Id Item</th>
+      <th scope="col">Category</th>
+      <th scope="col">Item Name</th>
+      <th scope="col">Stock</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="i : ${listItem}">
+      <th scope="row" th:text="${i.id_item}"></th>
+      <td th:text="${i.id_cat}"></td>
+      <td th:text="${i.item_name}"></td>
+      <td th:text="${i.stock}"></td>
+      <td th:text="${i.price}"></td>
+    </tr>
+  </tbody>
+</body>
+</html>
