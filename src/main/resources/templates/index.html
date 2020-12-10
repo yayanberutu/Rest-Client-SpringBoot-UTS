@@ -8,10 +8,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </head>
 <body>
-<form>
-	<input type="text" th:action="@{/get}" method="post" th:object="${item}">
-	<button type="submit" class="btn btn-primary"  th:field="*{id_item}">Search</button>
+<form th:action="@{/get}" method="post" th:object="${item}">
+	<input type="text" th:field="*{id_item}">
+	<button type="submit" class="btn btn-primary" >Search</button>
 </form>
+<a th:href="@{/add}" class="btn btn-success" >Tambah</a>
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -20,6 +21,7 @@
       <th scope="col">Item Name</th>
       <th scope="col">Stock</th>
       <th scope="col">Price</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -29,6 +31,10 @@
       <td th:text="${i.item_name}"></td>
       <td th:text="${i.stock}"></td>
       <td th:text="${i.price}"></td>
+      <td>
+      		<a th:href="@{'/edit/' + ${i.id_item}}" class="btn btn-warning" >Edit</a>
+      		<a th:href="@{'/delete/' + ${i.id_item}}" class="btn btn-danger" >Delete</a>
+      </td>
     </tr>
   </tbody>
 </body>
